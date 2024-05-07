@@ -45,7 +45,6 @@ public class Job {
         return Objects.hash(getId());
     }
 
-
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
@@ -91,5 +90,20 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+    @Override
+    public String toString() {
+        if (getName() == null && getEmployer() == null && getLocation() ==null && getPositionType()== null && getCoreCompetency() == null) {
+            return "OOPS! This job does not seem to exist.";
+        }
+        return System.lineSeparator()
+                + "ID: " + getId()
+                + "\nName: " + (getName().isEmpty() ? "Data not available" : getName())
+                + "\nEmployer: " + (getEmployer().getValue().isEmpty() ? "Data not available" : getEmployer())
+                + "\nLocation: " + (getLocation().getValue().isEmpty() ? "Data not available" : getLocation())
+                + "\nPosition Type: " + (getPositionType().getValue().isEmpty() ? "Data not available" : getPositionType())
+                + "\nCore Competency: " + (getCoreCompetency().getValue().isEmpty() ? "Data not available" : getCoreCompetency())
+                + System.lineSeparator();
     }
 }
